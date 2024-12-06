@@ -1,0 +1,173 @@
+\input{exam_header.tex}
+
+\begin{document}
+
+% ============== PRE-QUESTION TEXT ================
+
+\vspace{0.3in}
+\begin{flushright}
+  Last name, first name:\enspace\underline{\hspace{7cm}}\\[1em]
+  Matrikel-Nr.:         \enspace\underline{\hspace{7cm}}
+\end{flushright}
+\vspace{0.3em}
+\begin{center}
+  \begin{infobox}[frametitle={Important Notes:}]
+    Answer the questions in the spaces provided on the
+    question sheets.  If you run out of room for an answer,
+    continue on the back of the page in the empty box and
+    note to which question your calculation belongs. At the end of the exam
+    (\cpageref{sec:formulae}), there is a collection of formulae that you may
+    look up.\\
+
+    The points for each question(-part) are marked on the right margin.\\
+
+    This exam has \numquestions\ questions, for a total of \numpoints\
+    points. At least 50\% of the points are needed to pass.
+
+  \end{infobox}
+\end{center}
+\vspace{0.3em}
+
+% ============== Give some constants ================
+
+\begin{center}
+  \begin{Large}
+    \bf Quantities\\[-1em]
+    \label{sec:quantities}
+  \end{Large}
+\end{center}
+\input{quantities.tex}
+
+\examnewpage
+
+% ============== START OF QUESTIONS ================
+
+\begin{center}
+  \begin{Large}
+    \bf Questions\\[1em]
+    \label{sec:small}
+  \end{Large}
+\end{center}
+
+
+\begin{questions}
+  % MULTIPLE CHOICE QUESTIONS:
+  % we can have multiple choice questions with single-line answers or one answer per line
+  %---------------------
+  \question [1] The sine of an angle $\theta$ in a right triangle with sides of length $a = 3$ and $c = 5$ is\\
+  \begin{oneparcheckboxes}
+    \choice         0.4
+    \choice         0.5
+    \CorrectChoice  0.6
+    \choice         0.9
+  \end{oneparcheckboxes}
+  %---------------------
+  \question [2] The cosine of an angle $\theta$ in a right triangle with sides of length $a = 3$ and $c = 5$ is
+  \begin{checkboxes}
+    \choice         0.4
+    \CorrectChoice  0.6
+    \choice         0.8
+    \choice         1.0
+  \end{checkboxes}
+  %---------------------
+  % quick answers can also be given as answer line
+  \question [1] 
+  A right triangle has sides of length $a = 3$ and $b = 4$. Calculate the length of the hypotenuse $c$.
+  \answerline
+  %---------------------
+
+  % here we have a question with a solution box. Depending on how long the solution might be, we can specify the height of the solution box.
+  \question [3]
+  Explain what the Riemann hypothesis is and proof it.
+  \begin{solutionorbox}[4cm] %%%% SETS HEIGHT
+    The Riemann hypothesis is a conjecture that the Riemann zeta function has its zeros only at the negative even integers and complex numbers with real part 1/2. It was proposed by Bernhard Riemann in 1859.
+
+    The Riemann hypothesis has not been proven or disproven. It is one of the seven Millennium Prize Problems selected by the Clay Mathematics Institute, each of which carries a US\$1,000,000 prize for the first correct solution.
+  \end{solutionorbox}
+
+  \examnewpage
+
+  % a question can also have multiple parts, each with different points
+  % we start with some introduction text
+  
+  \question
+
+  Pythagoras was a Greek mathematician who lived in the 6th century BC. He is credited with the discovery of the Pythagorean theorem, which relates the lengths of the sides of a right triangle. The theorem states that the square of the length of the hypotenuse $c$ is equal to the sum of the squares of the lengths of the other two sides $a$ and $b$:
+  \begin{equation}
+    c^2 = a^2 + b^2.
+    \label{eq:pythagoras}
+  \end{equation}
+  
+  % now we have the parts of the question
+  \begin{parts}
+    % first part has 2 points and uses two fill-in fields
+    % The second fill-in field is wider if needed.
+    \part [2] The length of the hypotenuse of a right triangle with sides of length $a = 3$ and $b = 4$ is \fillin[5] while the area of the triangle is \fillin[6][7cm].
+    % next part uses an answer line, but can also leave space for a quick computation
+    \part [1] What is the length of the side $a$ of a right triangle with hypotenuse $c = 5$ and side $b = 4$?
+    \begin{solutionorbox}[\stretch{1}]
+      Using the Pythagorean theorem, we have
+      \begin{align*}
+        a^2 &= c^2 - b^2,\\
+        a &= \sqrt{5^2 - 4^2} = 3.
+      \end{align*}
+    \end{solutionorbox}
+    \answerline[3]
+
+    % the third part has just the question and a solution box, but here we need double the space
+    % we could also put in something like 2 cm to specify the height of the solution box.
+    \part [3] Derive the Pythagorean theorem.
+
+    \begin{solutionorbox}[\stretch{2}]
+        Let $a$ and $b$ be the lengths of the two sides of a right triangle, and $c$ the length of the hypotenuse. The area of the square with side length $a + b$ is equal to the sum of the areas of the squares with side lengths $a$ and $b$:
+        \begin{align*}
+          (a + b)^2 &= a^2 + b^2 + 2ab.
+        \end{align*}
+        The area of the square with side length $c$ is equal to the sum of the areas of the squares with side lengths $a$ and $b$:
+        \begin{align*}
+          c^2 &= a^2 + b^2.
+        \end{align*}
+        Subtracting the first equation from the second gives the Pythagorean theorem:
+        \begin{align*}
+          c^2 - (a^2 + b^2) &= 0,\\
+          c^2 &= a^2 + b^2.
+        \end{align*}
+
+    \end{solutionorbox}
+  \end{parts}
+
+  %---------------------
+
+
+  % print a table with the points
+
+  \clearpage
+
+  \begin{center}
+    \begin{Large}
+      \bf Grading Table
+    \end{Large}
+    \vspace*{2em}
+
+    \gradetable[v][questions]
+    %\gradetable[h][questions]
+    %\gradetable[v][pages]
+    %\gradetable[h][pages]
+  \end{center}
+\end{questions}
+
+
+\begin{center}
+  \begin{Large}
+    \bf Formulae\\[-1em]
+    \label{sec:formulae}
+  \end{Large}
+\end{center}
+
+% include the formulae
+\begin{multicols}{2}
+  \input{formulae.tex}
+\end{multicols}
+
+
+\end{document}

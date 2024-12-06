@@ -1,0 +1,186 @@
+% set option 'answers' do show solution
+\documentclass[addpoints,12pt]{exam}
+\usepackage[english]{babel}
+\usepackage[margin=1in,inner=0.6in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage[capitalise]{cleveref}
+\usepackage{wrapfig}
+\usepackage{caption} % for putting captions in minipages
+\usepackage{graphicx}
+
+% define some variables
+\newcommand{\examtitle}{Example Exam WS 2024/25}
+\newcommand{\examdate}{Dec. 09, 2024}
+\newcommand{\examauthor}{Prof. Dr. T. Birnstiel}
+\newcommand{\examheader}{Example Exam}
+
+% do not indent paragraphs
+\parindent0pt
+
+%%%%% to make boxes
+
+\usepackage{mdframed}
+\newmdenv [linecolor=black,backgroundcolor=gray!15,
+    frametitle={Note},leftmargin=1cm,
+    rightmargin=1cm]{infobox}
+
+%%%%% define the header and footer
+
+\makeatletter
+\@ifclasswith{exam}{answers}{\newcommand{\mytitle}[1]{\textcolor{red}{Solution: #1}}}{\newcommand{\mytitle}[1]{#1}}
+\makeatother
+
+\makeatletter
+% command that makes a new page also in the solution-version
+\@ifclasswith{exam}{answers}{\newcommand{\examnewpage}{\clearpage}}{\newcommand{\examnewpage}{\clearpage}}
+% new page only in exam, not in the solution
+\@ifclasswith{exam}{answers}{\newcommand{\examextrapage}{\clearpage}}{\newcommand{\examextrapage}{\clearpage \makeemptybox{\stretch{1}} \clearpage}}
+\makeatother
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader
+{LMU München}
+{
+    \begin{tabular}[t]{@{}c@{}} \mytitle{\textsc{\examtitle}}\\\begin{small}\examdate\end{small}\end{tabular}
+}
+{\examauthor}
+\runningheader{\examheader}
+{}
+{Page \thepage\ / \numpages}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+
+%%%%%%%
+
+% set the height between answer-lines
+\setlength{\linefillheight}{2em}
+
+% set the grid properties
+\colorgrids % turns on color of the grid
+\definecolor{GridColor}{gray}{.8}
+\setlength{\gridsize}{5mm}
+\setlength{\gridlinewidth}{0.1pt}
+
+% to shade solution boxes:
+\shadedsolutions
+
+% to have the points on the right margin
+\pointsinrightmargin
+
+% make boxes/brackets around the points instead of parantheses
+\boxedpoints
+%\bracketedpoints
+
+%%%%%% switch to sans-serif as default font and use helvetica
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[scaled=0.95]{helvet}
+
+%%%%%% length of the answerline
+\setlength\answerlinelength{5.5cm}
+
+%%%%%% change the check-box symbols
+
+\checkboxchar{$\Box$}
+\checkedchar{$\blacksquare$}
+
+%%%%%% get rid of extra indentation after the start of a question
+
+\renewcommand{\questionshook}{%
+    \setlength{\leftmargin}{0pt}%
+    \setlength{\labelwidth}{-\labelsep}%
+}
+
+%%%%%% make math also sans-serif
+\usepackage{sansmathfonts}
+%\renewcommand{\rmdefault}{\sfdefault}
+
+\usepackage{xparse}
+\NewDocumentCommand{\solutionfig}{ O{1} O{0.8} m }{
+    \begin{solution}[\stretch{#1}]
+        $~$\newline \includegraphics[width=#2\hsize]{#3}
+    \end{solution}
+}
+
+% point symbol
+
+\usepackage{tikz}
+\makeatletter
+\newcommand\halfpointmark{%
+    \textcolor{red}{
+        \tikz[baseline=(math.base)] \node[draw,circle,inner sep=1pt] (math) {$\m@th \frac{1}{2}$};%
+    }
+}
+\newcommand\pointmark[1][1]{%
+    \textcolor{red}{
+        \tikz[baseline=(math.base)] \node[draw,circle,inner sep=1pt] (math) {$\m@th #1$};%
+    }
+}
+\makeatother
+
+
+%\usepackage{sansmath} % Enables turning on sans-serif math mode, and using other environments
+%\sansmath % Enable sans-serif math for rest of document
+\sisetup{detect-all} % this also makes siunitx commands use the sans fonts
+
+% change language
+
+%\vqword{Aufgabe}
+%\vpword{Punkte}
+%\vsword{Ergebnis}
+%\vtword{\textbf{Summe}}
+
+%\pointpoints{Punkt}{Punkte}
+\pointpoints{Pt.}{Pt.}
+
+% define macros
+
+
+\def\d{\mathrm{d}}
+\def\degree{^\circ}
+\def\Rsun{R_\odot}
+\def\Msun{M_\odot}
+\def\Lsun{L_\odot}
+\def\Mjup{M_\mathrm{Jup}}
+\def\ajup{a_\mathrm{Jup}}
+\def\aearth{a_\mathrm{Earth}}
+\def\Rearth{R_\mathrm{Earth}}
+\def\Mearth{M_\mathrm{Earth}}
+\def\Teff{T_\mathrm{\kern-0.1em ef\kern-0.05em f}}
+\def\Mdot{\dot{M}}
+\def\me{m_\mathrm{e}}
+\def\ne{n_\mathrm{e}}
+\def\mp{m_\mathrm{p}}
+\def\mn{m_\mathrm{n}}
+\def\mH{m_\mathrm{H}}
+
+\def\ion#1#2{#1\,\textsc{#2}}
+\def\HI{\ion{H}{i}}
+\def\HII{\ion{H}{ii}}
+\def\HeI{\ion{He}{i}}
+\def\HeII{\ion{He}{ii}}
+
+\def\Mnuc{M_\mathrm{nuc}}
+\def\Lnuc{L_\mathrm{nuc}}
+\def\Mbolsun{M_\mathrm{bol}^\odot}
+\def\Mbolnuc{M_\mathrm{bol}^\mathrm{nuc}}
+\def\MdotBH{\dot M_\mathrm{BH}}
+
+\def\vcirc{v_\mathrm{circ}}
+\def\tKH{t_\mathrm{KH}}
+
+\def\Egrav{E_\mathrm{grav}}
+\def\Edeg{E_\mathrm{degen}}
+\def\Ne{N_\mathrm{e}}
+
+\def\tauc{\tau_\mathrm{c}}
+
+\def\Dd{D_\mathrm{d}}
+\def\Ds{D_\mathrm{s}}
+\def\Dds{D_\mathrm{ds}}
